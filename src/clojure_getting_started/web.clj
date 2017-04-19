@@ -15,13 +15,13 @@
       (str a "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg'/>"))
 
 (defn multiple-unicorns [x]
-  (let [x (or x 1)]
+  (let [x (Integer/parseInt (or x "1"))]
     (reduce replace-w-unicorn "" (range 0 x))))
 
 (defn unicorns [x]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body x})
+   :body (multiple-unicorns x)})
 
 (defroutes app
   (GET "/" []
