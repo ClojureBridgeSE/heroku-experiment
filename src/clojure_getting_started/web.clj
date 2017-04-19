@@ -21,7 +21,7 @@
 (defn unicorns [x]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body (multiple-unicorns x)})
+   :body x})
 
 (defroutes app
   (GET "/" []
