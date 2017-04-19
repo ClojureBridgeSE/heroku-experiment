@@ -11,9 +11,16 @@
    :headers {"Content-Type" "text/plain"}
    :body "Hello from Heroku"})
 
+(defn unicorns []
+  {:status 200
+   :headers {"Content-Type" "text/plain"}
+   :body "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg'/>"})
+
 (defroutes app
   (GET "/" []
        (splash))
+  (GET "/unicorns" []
+       (unicorns))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
