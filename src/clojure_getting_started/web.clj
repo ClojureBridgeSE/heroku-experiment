@@ -11,12 +11,14 @@
    :headers {"Content-Type" "text/plain"}
    :body "Hello from Heroku"})
 
-(defn replace-w-unicorn [a b]
-      (str a "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg'/>"))
+(defn image-unicorn [x]
+      (let [w (/ 100 x)]
+        (str "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg' width='"w"%' />")))
 
 (defn multiple-unicorns [x]
   (let [x (Integer/parseInt (or x "1"))]
-    (reduce replace-w-unicorn "" (range 0 x))))
+    (apply str (for [i (range 0 x)]
+                 (image-unicorn x)))))
 
 (defn unicorns [x]
   {:status 200
