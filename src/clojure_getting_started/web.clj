@@ -13,7 +13,7 @@
 
 (defn unicorns []
   {:status 200
-   :headers {"Content-Type" "text/plain"}
+   :headers {"Content-Type" "text/html"}
    :body "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg'/>"})
 
 (defroutes app
