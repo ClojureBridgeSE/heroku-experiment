@@ -11,16 +11,23 @@
    :headers {"Content-Type" "text/plain"}
    :body "Hello from Heroku"})
 
-(defn unicorns []
+(defn replace-w-unicorn [a b]
+      (str a "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg'/>"))
+
+(defn multiple-unicorns [x]
+  (let [x (or x 1)]
+    (reduce replace-w-unicorn "" (range 0 x))))
+
+(defn unicorns [x]
   {:status 200
    :headers {"Content-Type" "text/html"}
-   :body "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg'/>"})
+   :body (multiple-unicorns x)})
 
 (defroutes app
   (GET "/" []
        (splash))
-  (GET "/unicorns" []
-       (unicorns))
+  (GET "/unicorns" [x]
+       (unicorns x))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
