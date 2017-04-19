@@ -12,7 +12,7 @@
    :body "Hello from Heroku"})
 
 (defn image-unicorn [x]
-      (let [w (/ 100 x)]
+      (let [w (int (/ 100 x))]
         (str "<img src='https://thumbs.dreamstime.com/z/pooping-unicorn-smiling-rainbow-sky-39768836.jpg' width='"w"%' />")))
 
 (defn multiple-unicorns [x]
